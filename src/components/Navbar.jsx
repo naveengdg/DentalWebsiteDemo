@@ -31,18 +31,19 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-border-light py-2'
-            : 'bg-slate-950/40 backdrop-blur-md border-b border-white/10 py-2.5 sm:py-3'
+            ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-border-light'
+            : 'bg-slate-950/45 backdrop-blur-md border-b border-white/10'
         }`}
+        style={{
+          transform: 'none',
+          WebkitTransform: 'none',
+        }}
       >
         <nav className="container-main" aria-label="Main navigation">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <a
               href="#home"
@@ -148,7 +149,7 @@ export default function Navbar() {
             </div>
           </div>
         </nav>
-      </motion.header>
+      </header>
 
       {/* Mobile Menu */}
       <AnimatePresence>

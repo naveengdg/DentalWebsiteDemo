@@ -70,7 +70,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Side-by-Side Comparison Table / Cards */}
-        <div ref={diffRef} className="max-w-4xl mx-auto bg-surface rounded-3xl p-5 sm:p-8 md:p-10 border border-border shadow-card">
+        <div ref={diffRef} className="max-w-4xl mx-auto bg-surface rounded-3xl p-3.5 sm:p-8 md:p-10 border border-border shadow-card">
           {/* Table Header Labels on Desktop */}
           <div className="hidden sm:grid sm:grid-cols-12 gap-4 pb-4 mb-4 border-b border-border text-xs font-bold uppercase tracking-wider text-text-tertiary">
             <div className="sm:col-span-4">Experience</div>
@@ -82,14 +82,14 @@ export default function WhyChooseUs() {
           </div>
 
           {/* Rows */}
-          <div className="space-y-4 sm:space-y-3">
+          <div className="space-y-3.5 sm:space-y-3">
             {differences.map((diff, i) => (
               <motion.div
                 key={diff.feature}
                 initial={{ opacity: 0, y: 16 }}
                 animate={diffInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="p-4 sm:p-4.5 rounded-2xl bg-white border border-border-light hover:border-primary/20 hover:shadow-xs transition-all"
+                className="p-3.5 sm:p-4.5 rounded-2xl bg-white border border-border-light hover:border-primary/20 hover:shadow-xs transition-all"
               >
                 <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 sm:gap-4 items-center">
                   {/* Feature Title */}

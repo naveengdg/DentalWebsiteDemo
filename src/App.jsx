@@ -19,7 +19,7 @@ import ContactSection from './sections/ContactSection';
 
 export default function App() {
   return (
-    <div className="min-h-screen pb-16 md:pb-0">
+    <div className="min-h-screen pb-20 md:pb-0">
       <ScrollProgress />
       <Navbar />
       <main>
