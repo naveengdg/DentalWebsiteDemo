@@ -32,14 +32,19 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-border-light'
-            : 'bg-slate-950/45 backdrop-blur-md border-b border-white/10'
+            ? 'bg-white/98 shadow-sm border-b border-border-light'
+            : 'bg-slate-950/60 backdrop-blur-md border-b border-white/10'
         }`}
         style={{
-          transform: 'none',
-          WebkitTransform: 'none',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          paddingTop: 'env(safe-area-inset-top, 0px)',
+          WebkitTransform: 'translate3d(0, 0, 0)',
+          transform: 'translate3d(0, 0, 0)',
         }}
       >
         <nav className="container-main" aria-label="Main navigation">

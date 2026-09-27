@@ -66,13 +66,10 @@ export default function Hero() {
           );
         })}
 
-        {/* Calibrated Overlay — Keeps Dental Imagery Clearly Visible While Preserving Contrast */}
-        {/* Desktop Gradient: Darker on left behind text, luminous on right showing clinic */}
-        <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-slate-950/90 via-slate-950/65 to-slate-950/30 pointer-events-none" />
-        {/* Subtle Top & Bottom Vignette for Cinematic Feel */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-transparent to-slate-950/80 pointer-events-none" />
-        {/* Soft Dental Teal Brand Tint */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-teal-500/10 mix-blend-screen pointer-events-none" />
+        {/* Lighter Luminous Overlays — Dental Clinic Photos are Visibly Vibrant and Clear */}
+        <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-slate-950/75 via-slate-950/40 to-slate-950/15 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/65 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-primary/10 mix-blend-screen pointer-events-none" />
       </div>
 
       <div className="container-main relative z-10 pt-24 pb-16 sm:pt-28 sm:pb-20 md:pt-36 md:pb-24 w-full">

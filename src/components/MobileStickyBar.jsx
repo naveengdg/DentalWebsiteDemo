@@ -7,6 +7,10 @@ export default function MobileStickyBar() {
     <div
       className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-border shadow-[0_-4px_25px_rgba(0,0,0,0.12)]"
       style={{
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
         transform: 'translateZ(0)',
         WebkitTransform: 'translateZ(0)',
         paddingTop: '0.625rem',

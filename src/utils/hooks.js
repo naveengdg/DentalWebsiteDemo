@@ -39,16 +39,25 @@ export function useInView(options = {}) {
 
 /**
  * Custom hook to detect scroll position for navbar effects.
+ * Throttled with requestAnimationFrame to prevent re-render thrashing during mobile scroll.
  */
 export function useScrollPosition() {
   const [scrollY, setScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const y = window.scrollY;
-      setScrollY(y);
-      setIsScrolled(y > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const y = window.scrollY || window.pageYOffset || 0;
+          const scrolled = y > 25;
+          setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
+          setScrollY(y);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -59,12 +68,35 @@ export function useScrollPosition() {
 }
 
 /**
- * Smooth scroll to a section by ID.
+ * Smooth scroll directly to a section or directly to the booking application form.
+ * Accounts for fixed header offset and focuses the full name input field.
  */
 export function scrollToSection(sectionId) {
-  const el = document.getElementById(sectionId);
+  // If user clicks Book Appointment, point directly to the booking application form!
+  const targetId = (sectionId === 'appointment' || sectionId === 'booking')
+    ? 'booking-form'
+    : sectionId;
+
+  const el = document.getElementById(targetId) || document.getElementById(sectionId);
   if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const headerHeight = window.innerWidth < 768 ? 72 : 88;
+    const elementPosition = el.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    });
+
+    // Auto-focus the Name input on the booking application form
+    if (targetId === 'booking-form') {
+      setTimeout(() => {
+        const nameInput = document.getElementById('apt-name');
+        if (nameInput) {
+          nameInput.focus({ preventScroll: true });
+        }
+      }, 450);
+    }
   }
 }
 

@@ -95,11 +95,13 @@ export default function AppointmentForm() {
 
             {/* Right Column — Form */}
             <motion.div
+              id="booking-form"
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="scroll-mt-20 sm:scroll-mt-28"
             >
-              <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-4 sm:p-8 md:p-10 border border-border shadow-elevated" noValidate>
+              <form id="appointment-form" onSubmit={handleSubmit} className="bg-white rounded-3xl p-4 sm:p-8 md:p-10 border border-border shadow-elevated" noValidate>
                 <div className="space-y-5">
                   {/* Name */}
                   <div>
