@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* ============================================
+   Lumora Dental & Aesthetics — Design System
+   ============================================ */
+
+@theme {
+  /* Brand Colors */
+  --color-primary: #2A7A6E;
+  --color-primary-light: #3A9A8A;
+  --color-primary-dark: #1D5C53;
+  --color-primary-50: #F0FAF8;
+  --color-primary-100: #D0F0EA;
+  --color-primary-200: #A0E0D5;
+  --color-primary-500: #2A7A6E;
+  --color-primary-600: #236860;
+  --color-primary-700: #1D5C53;
+  --color-primary-800: #164540;
+  --color-primary-900: #0F2E2A;
+
+  /* Warm Accents */
+  --color-accent: #D4956A;
+  --color-accent-light: #E8B896;
+  --color-accent-dark: #B87A4F;
+
+  /* Surface Colors */
+  --color-surface: #FAFAF8;
+  --color-surface-warm: #F5F3EF;
+  --color-surface-card: #FFFFFF;
+  --color-surface-elevated: #FFFFFF;
+
+  /* Text Colors */
+  --color-text-primary: #1A2332;
+  --color-text-secondary: #4A5568;
+  --color-text-tertiary: #8896A6;
+  --color-text-inverse: #FFFFFF;
+
+  /* Border Colors */
+  --color-border: #E8E6E1;
+  --color-border-light: #F0EDE8;
+
+  /* Status Colors */
+  --color-success: #4CAF50;
+  --color-warning: #F5A623;
+  --color-error: #E53E3E;
+
+  /* Fonts */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Shadows */
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-nav: 0 1px 8px rgba(0, 0, 0, 0.06);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  /* Ensure inputs have robust base line-height and sizing */
+  input, select, textarea {
+    font-family: inherit;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  button {
+    font-family: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Universal image fit safeguard for aspect-ratio boxes */
+  [class*="aspect-"] > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+}
+
+@layer utilities {
+  /* Section Spacing */
+  .section-padding {
+    padding-top: clamp(4rem, 8vw, 7rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+  }
+
+  .container-main {
+    width: 100%;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1.25rem, 4vw, 2.5rem);
+    padding-right: clamp(1.25rem, 4vw, 2.5rem);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}
+
+/* Focus Styles */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-800);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
