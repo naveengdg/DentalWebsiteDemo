@@ -4,18 +4,18 @@ import { doctors } from '../data/siteData';
 import { useInView, scrollToSection } from '../utils/hooks';
 
 export default function DoctorProfile() {
-  const [ref, isInView] = useInView({ threshold: 0.2 });
+  const [ref, isInView] = useInView({ threshold: 0.05 });
   const doctor = doctors[0];
 
   return (
-    <section id="doctors" className="section-padding bg-surface-warm overflow-hidden">
+    <section id="doctors" className="py-12 sm:py-16 md:py-20 bg-surface-warm overflow-hidden">
       <div ref={ref} className="container-main">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
           {/* Doctor Portrait Visual */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-5 relative"
           >
             <div className="relative rounded-3xl overflow-hidden aspect-square sm:aspect-[4/3] lg:aspect-square shadow-xl border border-border-light bg-slate-100 shrink-0 w-full">
@@ -52,9 +52,9 @@ export default function DoctorProfile() {
 
           {/* Doctor Bio Content */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7"
           >
             <span className="inline-block text-xs sm:text-sm font-semibold text-primary tracking-wider uppercase mb-3 bg-primary-50 px-3 py-1 rounded-full">
